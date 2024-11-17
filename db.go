@@ -776,15 +776,15 @@ func (db *DB) DisableFileDeletions() error {
 }
 
 // EnableFileDeletions enables file deletions for the database.
-func (db *DB) EnableFileDeletions(force bool) error {
-	var cErr *C.char
-	C.rocksdb_enable_file_deletions(db.c, boolToChar(force), &cErr)
-	if cErr != nil {
-		defer C.rocksdb_free(unsafe.Pointer(cErr))
-		return errors.New(C.GoString(cErr))
-	}
-	return nil
-}
+//func (db *DB) EnableFileDeletions(force bool) error {
+//	var cErr *C.char
+//	C.rocksdb_enable_file_deletions(db.c, boolToChar(force), &cErr)
+//	if cErr != nil {
+//		defer C.rocksdb_free(unsafe.Pointer(cErr))
+//		return errors.New(C.GoString(cErr))
+//	}
+//	return nil
+//}
 
 // DeleteFile deletes the file name from the db directory and update the internal state to
 // reflect that. Supports deletion of sst and log files only. 'name' must be

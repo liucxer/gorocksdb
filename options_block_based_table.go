@@ -148,15 +148,15 @@ func (opts *BlockBasedTableOptions) SetUseDeltaEncoding(value bool) {
 // Many applications will benefit from passing the result of
 // NewBloomFilterPolicy() here.
 // Default: nil
-func (opts *BlockBasedTableOptions) SetFilterPolicy(fp FilterPolicy) {
-	if nfp, ok := fp.(nativeFilterPolicy); ok {
-		opts.cFp = nfp.c
-	} else {
-		idx := registerFilterPolicy(fp)
-		opts.cFp = C.gorocksdb_filterpolicy_create(C.uintptr_t(idx))
-	}
-	C.rocksdb_block_based_options_set_filter_policy(opts.c, opts.cFp)
-}
+//func (opts *BlockBasedTableOptions) SetFilterPolicy(fp FilterPolicy) {
+//	if nfp, ok := fp.(nativeFilterPolicy); ok {
+//		opts.cFp = nfp.c
+//	} else {
+//		idx := registerFilterPolicy(fp)
+//		opts.cFp = C.gorocksdb_filterpolicy_create(C.uintptr_t(idx))
+//	}
+//	C.rocksdb_block_based_options_set_filter_policy(opts.c, opts.cFp)
+//}
 
 // SetNoBlockCache specify whether block cache should be used or not.
 // Default: false
